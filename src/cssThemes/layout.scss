@@ -1,0 +1,16 @@
+// layout布局样式
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  .layout-header {
+    position: fixed;
+  }
+  .layout-main {
+    display: flex;
+    margin-top: $amia-header-height;
+    flex-grow: 1;
+    background-color: #fff;
+  }
+}

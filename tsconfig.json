@@ -1,4 +1,12 @@
 {
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*" // 解决vite配置别名，ts不识别的问题
+      ]
+    }
+  },
   "files": [],
   "references": [
     {
@@ -10,5 +18,11 @@
     {
       "path": "./tsconfig.vitest.json"
     }
-  ]
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    // "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
 }

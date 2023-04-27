@@ -1,0 +1,39 @@
+html,
+body,
+#app {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $amia-bg-color;
+  -webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+}
+
+// 宽高
+.h100 {
+  height: 100%;
+}
+.w100 {
+  width: 100%;
+}
+.vh100 {
+  height: 100vh;
+}
+.vw100 {
+  width: 100vw;
+}
+
+// flex
+.flex {
+ display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
+}

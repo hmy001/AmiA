@@ -10,16 +10,25 @@ export default defineConfig((config: ConfigEnv) => {
   const envDir = process.cwd();
   // loadEnv第三个参数是前缀，表示输出环境变量前缀为xxx的环境变量，默认值为'VITE_'
   const env = loadEnv(mode, envDir, ""); // 加载环境变量文件，.env为公用环境变量，开发环境下会合并：.env 和.env.development的环境变量，生产环境与测试环境也会，根据mode的值不同，会合并不同文件下的环境变量（.env+.env.[mode]）
-  console.log(process.env.VITE_TEST, env.VITE_TEST,env)
+  // console.log(process.env.VITE_TEST, env.VITE_TEST,env)
   return {
     plugins: [vue()],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)) // import.meta.url 
+        '@': fileURLToPath(new URL('./src', import.meta.url)) // import.meta.url
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        // 全局样式引入
+        scss: {
+          additionalData: '@import "@/cssThemes/variable.scss";',
+          javascriptEnabled: true
+        }
       }
     }
-  }
-})
+  };
+});
 
 // console.log(fileURLToPath(new URL('./src', import.meta.url))) // 返回字符串 D:\vue-project\AmiA-Vue\src
 // console.log(import.meta.url) // 返回字符串file:///D:/vue-project/AmiA-Vue/vite.config.ts，
