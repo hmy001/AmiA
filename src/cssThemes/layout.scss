@@ -1,16 +1,28 @@
 // layout布局样式
 .layout-container {
-  display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
   .layout-header {
     position: fixed;
+    .layout-logo {
+      height: $amia-header-height;
+      width: $amia-asideBar-width;
+      box-sizing: border-box;
+      border-right: solid 1px var(--amia-header-border-color);
+    }
   }
   .layout-main {
     display: flex;
+    height: calc(100% - $amia-header-height);
     margin-top: $amia-header-height;
-    flex-grow: 1;
-    background-color: #fff;
+    background-color: var(--amia-bg-color);
+    .layout-main-content {
+      height: 100%;
+      flex-grow: 1;
+      .layout-content {
+        height: calc(100% - $amia-tags-height);
+      }
+    }
   }
 }

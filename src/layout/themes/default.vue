@@ -1,12 +1,22 @@
 <!-- 默认布局 -->
 <template>
   <el-container class="layout-container">
-    <layout-header class="layout-header"></layout-header>
+    <!-- 顶部 -->
+    <layout-header class="layout-header">
+      <template #header-right>
+        <logo class="layout-logo inline-flex align-center"></logo>
+      </template>
+    </layout-header>
     <div class="layout-main">
+      <!-- 侧边导航 -->
       <layout-sideBar></layout-sideBar>
       <div class="layout-main-content">
+        <!-- 标签条 -->
         <layout-tags></layout-tags>
-        <layout-content></layout-content>
+        <!-- 页面内容 -->
+        <el-scrollbar class="layout-content">
+          <layout-content></layout-content>
+        </el-scrollbar>
       </div>
     </div>
   </el-container>
@@ -16,8 +26,9 @@
 // 导入组件
 import LayoutHeader from '../components/header/index.vue';
 import LayoutSideBar from '../components/navbars/sideBar.vue';
-import LayoutTags from '../components/tags/index.vue'
+import LayoutTags from '../components/tags/index.vue';
 import LayoutContent from '../components/content/index.vue';
+import Logo from '../components/logo/index.vue';
 </script>
 
 <style scoped lang='scss'>

@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-我是头部栏
+    <slot name="header-left"></slot>
+    <slot name="header-middle"></slot>
+    <slot name="header-right"></slot>
   </div>
 </template>
 
@@ -13,7 +15,8 @@
   width: 100%;
   height: $amia-header-height;
   min-height: $amia-header-height;
-  box-sizing: content-box;
-  border-bottom: solid 1px #eee;
+  box-sizing: border-box;
+  border-bottom: solid 1px var(--amia-header-border-color);
+  background-color: var(--amia-header-bg-color);
 }
 </style>

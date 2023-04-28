@@ -1,7 +1,9 @@
 <!-- 侧边导航栏 -->
 <template>
   <div class="side-bar">
-我是侧边栏
+    <el-scrollbar>
+
+    </el-scrollbar>
   </div>
 </template>
 
@@ -11,9 +13,9 @@
 
 <style scoped lang='scss'>
 .side-bar {
-  width: 230px;
+  width: $amia-asideBar-width;
+  min-width: $amia-asideBar-width;
   height: 100%;
-  box-shadow: 10px 0 10px -10px rgb(0 0 0 / 12%);
-  background-color: bisque;
+  box-shadow: 10px 0 10px -10px var(--amia-tags-border-color);
 }
 </style>
