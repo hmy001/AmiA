@@ -2,7 +2,8 @@
 <template>
   <div class="side-bar">
     <el-scrollbar>
-
+      <slot name="logo"></slot>
+      <slot name="menu"></slot>
     </el-scrollbar>
   </div>
 </template>

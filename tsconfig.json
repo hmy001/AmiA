@@ -1,28 +1,29 @@
 {
   "compilerOptions": {
+    // "ignoreDeprecations": "5.0",
     "baseUrl": "./",
     "paths": {
       "@/*": [
         "src/*" // 解决vite配置别名，ts不识别的问题
       ]
-    }
+    },
   },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
-  ],
+  // "files": [],
+  // "references": [
+  //   {
+  //     "path": "./tsconfig.node.json"
+  //   },
+  //   {
+  //     "path": "./tsconfig.app.json"
+  //   },
+  //   {
+  //     "path": "./tsconfig.vitest.json"
+  //   }
+  // ],
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    // "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
   ],
+  "exclude": ["node_modules", "dist"]
 }

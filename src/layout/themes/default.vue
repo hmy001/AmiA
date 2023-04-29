@@ -9,7 +9,11 @@
     </layout-header>
     <div class="layout-main">
       <!-- 侧边导航 -->
-      <layout-sideBar></layout-sideBar>
+      <layout-sideBar>
+        <template #menu>
+          <vertical-menu :childrens="[]"></vertical-menu>
+        </template>
+      </layout-sideBar>
       <div class="layout-main-content">
         <!-- 标签条 -->
         <layout-tags></layout-tags>
@@ -29,6 +33,7 @@ import LayoutSideBar from '../components/navbars/sideBar.vue';
 import LayoutTags from '../components/tags/index.vue';
 import LayoutContent from '../components/content/index.vue';
 import Logo from '../components/logo/index.vue';
+import verticalMenu from '../components/menu/verticalMenu.vue';
 </script>
 
 <style scoped lang='scss'>
