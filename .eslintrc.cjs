@@ -13,6 +13,7 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off', // 关闭vue的组件名称命名必须多个单词
-    'semi': 'warn'
+    'semi': 'warn',
+    'prefer-const': 'warn'
   }
 };

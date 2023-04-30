@@ -1,26 +1,45 @@
 <!-- 菜单递归组件，生成多级菜单 -->
 <template>
   <template v-for="item in childrens" :key="item.path">
-    <el-sub-menu :index="item.path" >
+    <!-- 如果还有children -->
+    <!-- <el-sub-menu :index="(item as amiaRoute).path" v-if="(item as amiaRoute).children && (item as amiaRoute).children.length > 0"> -->
+    <el-sub-menu :index="(item as amiaRoute).path" v-if="(item as amiaRoute).children && (item as amiaRoute).children.length > 0">
       <template #title>
-        <icon-font :icon="item.meta.icon"></icon-font>
-        <span></span>
+        <icon-font :icon="(item as amiaRoute).meta.icon"></icon-font>
+        <span>{{(item as amiaRoute).meta.title }}</span>
       </template>
-      <sub-menu></sub-menu>
+      <sub-menu :childrens="(item as amiaRoute).children"></sub-menu>
     </el-sub-menu>
+    <!-- 否则 -->
+    <template v-else>
+      <el-menu-item :index="(item as amiaRoute).path">
+        <template #title>
+          <icon-font :icon="(item as amiaRoute).meta.icon"></icon-font>
+          <span>{{(item as amiaRoute).meta.title }}</span>
+        </template>
+      </el-menu-item>
+    </template>
   </template>
 </template>
 
 <script setup lang='ts'>
+import type { amiaRoute } from '@/router/types/route';
+import { computed, PropType } from 'vue';
+// 组件
 import iconFont from '@/components/iconFont/index.vue';
-defineProps({
+const props = defineProps({
   childrens: {
-    type: Array<amiaRoute>,
+    type: [Array, Object] as PropType<amiaRoute[] | amiaRoute>,
+      // type: amiaRoute,
     default: () => {
       return [];
     }
   }
 });
+const childrens = computed(() => {
+  return props.childrens;
+});
+console.log("子菜单：", childrens)
 </script>
 
 <style scoped lang='scss'>

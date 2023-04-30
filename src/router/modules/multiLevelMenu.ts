@@ -1,5 +1,5 @@
-import type { RouteRecordRaw } from 'vue-router'; // 路由类型
-const multiLevelMenu: RouteRecordRaw = {
+import type { amiaRoute } from '@/router/types/route';
+const multiLevelMenu: amiaRoute = {
   path: '/multiLevelMenu',
   name: 'multiLevelMenu',
   redirect: '/multiLevelMenu/menu1/menu1-1',
