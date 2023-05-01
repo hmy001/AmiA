@@ -14,6 +14,15 @@
   }
   .layout-sideBar {
     background-color: var(--amia-sideBar-bg-color);
+    .el-sub-menu {
+      ul {
+        background-color: var(--amia-asideBar-submenu-color);
+      }
+    }
+    .el-sub-menu__title:hover,
+    .el-menu-item:hover {
+      background-color: var(--amia-asideBar-submenu-hover-color);
+    }
     .el-sub-menu__title,
     .el-menu-item {
       height: $amia-asideBar-menu-height;
@@ -36,11 +45,11 @@
     .el-menu-item.is-active::before {
       content: '';
       position: absolute;
-      left: 10px;
+      left: 0px;
       height: calc(100% - 5px);
-      width: calc(100% - 20px);
+      width: calc(100% - 15px);
       background-color: var(--amia-theme-color);
-      border-radius: $amia-asideBar-menu-radius;
+      border-radius:  0  $amia-asideBar-menu-radius $amia-asideBar-menu-radius 0;
     }
   }
   .layout-main {

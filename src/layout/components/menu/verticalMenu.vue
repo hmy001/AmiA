@@ -2,10 +2,10 @@
 <template>
   <div>
     <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
+      router
+      :default-active="route.path"
+      @open="handleOpen"
+      @close="handleClose"
       >
         <template v-for="menu in menuList" :key="menu.path">
           <!-- 若有子菜单 -->
@@ -29,8 +29,11 @@
 </template>
 
 <script setup lang='ts'>
+// 类型
 import type { amiaRoute } from '@/router/types/route';
+// 内置api
 import { computed, PropType } from 'vue';
+import { useRoute } from 'vue-router';
 // 组件
 import iconFont from '@/components/iconFont/index.vue';
 import subMenu  from './components/subMenu.vue';
@@ -43,11 +46,13 @@ const props = defineProps({
     }
   }
 });
+// 用户菜单
 const menuList = computed(() => {
-
-  console.log("垂直菜单：：:",props.menuList)
   return props.menuList;
 });
+const route = useRoute(); // 当前路由信息
+// console.log("路由：",route)
+// 打开/关闭
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
