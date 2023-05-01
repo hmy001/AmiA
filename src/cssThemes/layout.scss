@@ -12,6 +12,37 @@
       border-right: solid 1px var(--amia-header-border-color);
     }
   }
+  .layout-sideBar {
+    background-color: var(--amia-sideBar-bg-color);
+    .el-sub-menu__title,
+    .el-menu-item {
+      height: $amia-asideBar-menu-height;
+      line-height: $amia-asideBar-menu-height;
+      span {
+        z-index: 1;
+      }
+      .iconfont {
+        margin-right: 5px;
+      }
+      .menu-title {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .el-menu-item.is-active {
+      color: #fff;
+    }
+    .el-menu-item.is-active::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      height: calc(100% - 5px);
+      width: calc(100% - 20px);
+      background-color: var(--amia-theme-color);
+      border-radius: $amia-asideBar-menu-radius;
+    }
+  }
   .layout-main {
     display: flex;
     height: calc(100% - $amia-header-height);
@@ -25,4 +56,8 @@
       }
     }
   }
+}
+
+#amia-logo g{
+  fill: aquamarine;
 }

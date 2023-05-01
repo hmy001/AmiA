@@ -2,11 +2,10 @@
 <template>
   <template v-for="item in childrens" :key="item.path">
     <!-- 如果还有children -->
-    <!-- <el-sub-menu :index="(item as amiaRoute).path" v-if="(item as amiaRoute).children && (item as amiaRoute).children.length > 0"> -->
     <el-sub-menu :index="(item as amiaRoute).path" v-if="(item as amiaRoute).children && (item as amiaRoute).children.length > 0">
       <template #title>
         <icon-font :icon="(item as amiaRoute).meta.icon"></icon-font>
-        <span>{{(item as amiaRoute).meta.title }}</span>
+        <span class="menu-title">{{(item as amiaRoute).meta.title }}</span>
       </template>
       <sub-menu :childrens="(item as amiaRoute).children"></sub-menu>
     </el-sub-menu>
@@ -15,7 +14,7 @@
       <el-menu-item :index="(item as amiaRoute).path">
         <template #title>
           <icon-font :icon="(item as amiaRoute).meta.icon"></icon-font>
-          <span>{{(item as amiaRoute).meta.title }}</span>
+          <span class="menu-title">{{(item as amiaRoute).meta.title }}</span>
         </template>
       </el-menu-item>
     </template>
@@ -30,7 +29,7 @@ import iconFont from '@/components/iconFont/index.vue';
 const props = defineProps({
   childrens: {
     type: [Array, Object] as PropType<amiaRoute[] | amiaRoute>,
-      // type: amiaRoute,
+    // type: Array as PropType<amiaRoute[]>,
     default: () => {
       return [];
     }

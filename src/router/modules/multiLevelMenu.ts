@@ -13,7 +13,7 @@ const multiLevelMenu: amiaRoute = {
       name: 'menu1',
       redirect: '/multiLevelMenu/menu1/menu1-1',
       meta: {
-        title: '菜单1',
+        title: '菜单1 哈哈哈哈哈哈哈哈哈哈哈哈',
         icon: 'icon-caidan'
       },
       children: [
@@ -40,7 +40,7 @@ const multiLevelMenu: amiaRoute = {
               name: 'menu1-2-1',
               component: () => import ('@/views/multiLevelMenu/menu1-2-1.vue'),
               meta: {
-                title: '菜单1-2-1',
+                title: '菜单1-2-1 哈哈哈哈哈哈哈哈哈哈哈哈',
                 icon: 'icon-caidan'
               },
             }

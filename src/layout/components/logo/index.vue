@@ -1,21 +1,22 @@
 <template>
   <div class="logo">
-    <img :src="logo" alt="" :style="{width: imgW + 'px', height: imgH + 'px'}">
-    <span :style="{fontSize: fontSize + 'px', lineHeight: imgH + 'px', color: fontColor, fontWeight: fontWeight}">amia system by vue3</span>
+    <!-- <img :src="logo" alt="" :style="{width: imgW + 'px', height: imgH + 'px'}"> -->
+    <svg-img name="logo" :img-h="logoH" :img-w="logoW" color="var(--amia-theme-color)"></svg-img>
+    <span :style="{fontSize: fontSize + 'px', lineHeight: logoH + 'px', color: fontColor, fontWeight: fontWeight}">amia system by vue3</span>
   </div>
 </template>
 
 <script setup lang='ts'>
 // 组件
-import logo from '@/assets/svg/logo.svg';
+import svgImg from '@/components/svgImg/index.vue';
 defineProps({
-  imgW: {
+  logoW: {
     type: Number,
     default: () => {
       return 32;
     }
   },
-  imgH: {
+  logoH: {
     type: Number,
     default: () => {
       return 32;
@@ -36,7 +37,7 @@ defineProps({
   fontColor: {
     type: String,
     default: () => {
-      return '#008aff';
+      return 'var(--amia-theme-color)';
     }
   },
 });

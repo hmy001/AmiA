@@ -1,6 +1,7 @@
 // 变量，在vite已引入，不用在main中再引入
 // 颜色使用 root 方便后期主题颜色控制
 :root {
+  --amia-theme-color: #0000ff;
   --amia-bg-color: #f6f6f6;
   --amia-header-bg-color: #fff;
   --amia-header-border-color: #eee;
@@ -14,3 +15,5 @@
 $amia-header-height: 50px;
 $amia-tags-height: 34px;
 $amia-asideBar-width: 230px;
+$amia-asideBar-menu-height: 50px;
+$amia-asideBar-menu-radius: 20px;

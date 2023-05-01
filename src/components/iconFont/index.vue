@@ -1,19 +1,19 @@
 <template>
-  <div v-if="iconType=='fontClass'">
+  <template v-if="iconType=='fontClass'">
     <span :class="['iconfont', icon]" :style="iconfontStyle"></span>
-  </div>
-  <div v-else-if="iconType=='unicode'">
+  </template>
+  <template v-else-if="iconType=='unicode'">
     <span class="iconfont" :style="iconfontStyle">{{ icon }}</span>
-  </div>
-  <div v-else>
+  </template>
+  <template v-else>
     <svg class="icon" aria-hidden="true" :style="iconfontStyle">
       <use :xlink:href="'#'+icon"></use>
     </svg>
-  </div>
+  </template>
 </template>
 
 <script setup lang='ts'>
-import { computed } from 'vue'
+import { computed } from 'vue';
 const props = defineProps({
   icon: { // icon 名称
     type: String,

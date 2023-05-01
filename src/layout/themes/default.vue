@@ -9,7 +9,7 @@
     </layout-header>
     <div class="layout-main">
       <!-- 侧边导航 -->
-      <layout-sideBar>
+      <layout-sideBar class="layout-sideBar">
         <template #menu>
           <vertical-menu :menuList="routeList"></vertical-menu>
         </template>
