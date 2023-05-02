@@ -7,6 +7,10 @@
   --amia-header-border-color: #eee;
   --amia-tags-bg-color: #fff;
   --amia-tags-border-color: rgba(0, 0, 0, 0.12);
+  --amia-tag-border-color: #eee;
+  --amia-tag-text-color: #333;
+  --amia-tag-active-color: #0000ff;
+  --amia-tag-close-bg-color: #eee;
   --amia-sideBar-bg-color: #fff;
   --amia-asideBar-submenu-color: #f5f5f5;
   --amia-asideBar-submenu-hover-color: #e1e1e1;
@@ -16,6 +20,8 @@
 // $amia-bg-color: #f6f6f6;
 $amia-header-height: 50px;
 $amia-tags-height: 34px;
+$amia-tag-height: 30px;
+$amia-tag-border-radius: 3px;
 $amia-asideBar-width: 230px;
 $amia-asideBar-menu-height: 50px;
 $amia-asideBar-menu-radius: 20px;

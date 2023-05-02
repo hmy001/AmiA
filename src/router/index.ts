@@ -2,7 +2,8 @@ import { createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router';
 import type { amiaRoute } from '@/router/types/route';
 import store from '@/stores'; // route被导入时，store还没创建，防止错误
 import { useRouteStore } from '@/stores/route';
-import multiLevelMenu from './modules/multiLevelMenu';
+import multiLevelMenu from './modules/multiLevelMenu'; // 多级菜单
+import shim from './modules/shim';
 
 export const routeList: amiaRoute[] = [
   {
@@ -25,7 +26,7 @@ export const routeList: amiaRoute[] = [
 ];
 
 const routeStore = useRouteStore(store);
-routeList[0].children?.push(multiLevelMenu as any);
+routeList[0].children?.push(multiLevelMenu as any, shim as any);
 routeStore.setRouteList(routeList[0].children);
 console.log(store, routeStore,routeList);
 const router = createRouter({

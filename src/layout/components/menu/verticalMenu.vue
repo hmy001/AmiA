@@ -11,7 +11,7 @@
           <!-- 若有子菜单 -->
           <el-sub-menu :index="menu.path" v-if="menu.children && menu.children.length > 0">
             <template #title>
-              <icon-font :icon="menu.meta && menu.meta.icon"></icon-font>
+              <icon-font v-if="menu.meta.icon" :icon="menu.meta.icon"></icon-font>
               <span class="menu-title">{{menu.meta &&  menu.meta.title }}</span>
             </template>
             <sub-menu :childrens="menu.children"></sub-menu>
@@ -19,7 +19,7 @@
           <!-- 否则 -->
           <el-menu-item :index="menu.path" v-else>
             <template #title>
-              <icon-font :icon="menu.meta && menu.meta.icon"></icon-font>
+              <icon-font v-if="menu.meta.icon" :icon="menu.meta.icon"></icon-font>
               <span class="menu-title">{{menu.meta &&  menu.meta.title }}</span>
             </template>
           </el-menu-item>
@@ -35,7 +35,6 @@ import type { amiaRoute } from '@/router/types/route';
 import { computed, PropType } from 'vue';
 import { useRoute } from 'vue-router';
 // 组件
-import iconFont from '@/components/iconFont/index.vue';
 import subMenu  from './components/subMenu.vue';
 
 const props = defineProps({

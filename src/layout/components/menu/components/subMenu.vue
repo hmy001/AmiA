@@ -4,7 +4,7 @@
     <!-- 如果还有children -->
     <el-sub-menu :index="(item as amiaRoute).path" v-if="(item as amiaRoute).children && (item as amiaRoute).children.length > 0">
       <template #title>
-        <icon-font :icon="(item as amiaRoute).meta.icon"></icon-font>
+        <icon-font v-if="(item as amiaRoute).meta.icon" :icon="(item as amiaRoute).meta.icon"></icon-font>
         <span class="menu-title">{{(item as amiaRoute).meta.title }}</span>
       </template>
       <sub-menu :childrens="(item as amiaRoute).children"></sub-menu>
@@ -13,7 +13,7 @@
     <template v-else>
       <el-menu-item :index="(item as amiaRoute).path">
         <template #title>
-          <icon-font :icon="(item as amiaRoute).meta.icon"></icon-font>
+          <icon-font v-if="(item as amiaRoute).meta.icon" :icon="(item as amiaRoute).meta.icon"></icon-font>
           <span class="menu-title">{{(item as amiaRoute).meta.title }}</span>
         </template>
       </el-menu-item>
@@ -24,8 +24,6 @@
 <script setup lang='ts'>
 import type { amiaRoute } from '@/router/types/route';
 import { computed, PropType } from 'vue';
-// 组件
-import iconFont from '@/components/iconFont/index.vue';
 const props = defineProps({
   childrens: {
     type: [Array, Object] as PropType<amiaRoute[] | amiaRoute>,
