@@ -1,11 +1,12 @@
 import settingPersistent from '@/settings/persistent';
 import { createStorage } from './storage';
 import { createCookie } from './cookie';
+import persistent from '@/settings/persistent';
 
 const ls = createStorage({prefixKey: settingPersistent.PREFIX_KEY, storage: localStorage, timeout: settingPersistent.CACHE_TIME});
 const ss = createStorage({prefixKey: settingPersistent.PREFIX_KEY, storage: sessionStorage, timeout: settingPersistent.CACHE_TIME});
 const ck = createCookie({prefixKey: settingPersistent.PREFIX_KEY, timeout: settingPersistent.CACHE_TIME, Path: settingPersistent.PATH, Domain: settingPersistent.DOMAIN, Secure: settingPersistent.SECURE})
-export class Presistent {
+export class Persistent {
   // localStorage
   static getLocal(key: string) {
     return ls.get(key);

@@ -1,7 +1,7 @@
 // 变量，在vite已引入，不用在main中再引入
 // 颜色使用 root 方便后期主题颜色控制
 :root {
-  --amia-theme-color: #0000ff;
+  --amia-theme-color: #0960db;
   --amia-bg-color: #f6f6f6;
   --amia-header-bg-color: #fff;
   --amia-header-border-color: #eee;
@@ -9,11 +9,11 @@
   --amia-tags-border-color: rgba(0, 0, 0, 0.12);
   --amia-tag-border-color: #eee;
   --amia-tag-text-color: #333;
-  --amia-tag-active-color: #0000ff;
+  --amia-tag-active-color: #0960db;
   --amia-tag-close-bg-color: #eee;
   --amia-sideBar-bg-color: #fff;
-  --amia-asideBar-submenu-color: #f5f5f5;
-  --amia-asideBar-submenu-hover-color: #e1e1e1;
+  --amia-asideBar-submenu-color: #e8e8e8;
+  --amia-asideBar-submenu-hover-color: #c0c0c0;
   --amia-footer-bg-color: #fff;
 }
 
@@ -24,4 +24,4 @@ $amia-tag-height: 30px;
 $amia-tag-border-radius: 3px;
 $amia-asideBar-width: 230px;
 $amia-asideBar-menu-height: 50px;
-$amia-asideBar-menu-radius: 20px;
+$amia-asideBar-menu-radius: 10px;

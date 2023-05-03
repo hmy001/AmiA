@@ -18,7 +18,8 @@ export const routeList: amiaRoute[] = [
         component: () => import('@/views/home/index.vue'),
         meta: {
           title: '首页',
-          icon: 'icon-shouye2'
+          icon: 'icon-shouye2',
+          isAffix: true
         },
       }
     ]

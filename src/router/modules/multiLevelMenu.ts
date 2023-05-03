@@ -23,7 +23,8 @@ const multiLevelMenu: amiaRoute = {
           component: () => import ('@/views/multiLevelMenu/menu1-1.vue'),
           meta: {
             title: '菜单1-1',
-            icon: 'icon-caidan'
+            icon: 'icon-caidan',
+            isAffix: true,
           },
         },
         {

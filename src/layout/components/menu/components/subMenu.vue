@@ -5,7 +5,7 @@
     <el-sub-menu :index="(item as amiaRoute).path" v-if="(item as amiaRoute).children && (item as amiaRoute).children.length > 0">
       <template #title>
         <icon-font v-if="(item as amiaRoute).meta.icon" :icon="(item as amiaRoute).meta.icon"></icon-font>
-        <span class="menu-title">{{(item as amiaRoute).meta.title }}</span>
+        <span class="menu-title" :title="(item as amiaRoute).meta.title">{{(item as amiaRoute).meta.title }}</span>
       </template>
       <sub-menu :childrens="(item as amiaRoute).children"></sub-menu>
     </el-sub-menu>
@@ -14,7 +14,7 @@
       <el-menu-item :index="(item as amiaRoute).path">
         <template #title>
           <icon-font v-if="(item as amiaRoute).meta.icon" :icon="(item as amiaRoute).meta.icon"></icon-font>
-          <span class="menu-title">{{(item as amiaRoute).meta.title }}</span>
+          <span class="menu-title" :title="(item as amiaRoute).meta.title">{{(item as amiaRoute).meta.title }}</span>
         </template>
       </el-menu-item>
     </template>
@@ -36,7 +36,7 @@ const props = defineProps({
 const childrens = computed(() => {
   return props.childrens;
 });
-console.log("子菜单：", childrens)
+// console.log("子菜单：", childrens)
 </script>
 
 <style scoped lang='scss'>

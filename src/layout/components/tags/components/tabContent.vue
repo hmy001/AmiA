@@ -1,16 +1,24 @@
 <!-- tab -->
 <template>
   <ul class="tab">
-    <li v-for="(item, index) in tabList"
+    <li v-for="(item, index) in tagList"
      :key="item.path"
      @mouseenter="msEnter($event, index)"
      @mouseleave="msLeave($event, index)"
+     @click="$emit('tagClick', item)"
      class="tab-item"
-     :class="[item.path=='2' ? 'active' : '']" >
-      <icon-font v-if="item.icon"></icon-font>
-      <span>{{ item.title }}</span>
-      <icon-font class="icon" icon="icon-cuowuguanbiquxiao"></icon-font>
-      <div class="line" :class="[enterIndex == index ? 'line-in' : '', outIndex == index ? 'line-out' : '']"></div>
+     :class="[item.path == activeTag ? 'active' : '']" >
+     <!-- tag图标 -->
+      <icon-font class="pre-icon" v-if="item.icon" :icon="item.icon"></icon-font>
+      <!-- tag名称 -->
+      <span class="tab-title">{{ item.title }}</span>
+      <!-- 关闭按钮 -->
+      <icon-font v-if="tagList.length > 1" class="icon" icon="icon-cuowuguanbiquxiao"></icon-font>
+      <!-- 下划线 -->
+      <div class="line"
+      :class="[enterIndex == index && item.path != activeTag ? 'line-in' : '',
+       outIndex == index && item.path != activeTag ? 'line-out' : '']">
+       </div>
     </li>
   </ul>
 </template>
@@ -19,10 +27,18 @@
 import { PropType, ref } from 'vue';
 
 const props = defineProps({
-  tabList: Array as PropType<amiaTag[]>,
-  default: []
+  tagList: {
+    type: Array as PropType<amiaTag[]>,
+    default: () => {
+      return [];
+    }
+  },
+  activeTag: {
+    type: String,
+    default: ''
+  }
 });
-// 变量
+
 const enterIndex = ref(-1);
 const outIndex = ref(-1);
 // 鼠标进入进出动画
@@ -70,9 +86,13 @@ function msLeave(e: MouseEvent, index: number) {
     border: solid 1px var(--amia-tag-border-color);
     border-radius: $amia-tag-border-radius;
     width: auto;
+    line-height: 14px;
     margin: 0 2px;
     overflow: hidden;
-    padding: 5px 10px;
+    padding: 5px;
+    .pre-icon {
+      margin-right: 5px;
+    }
     .icon {
     padding: 3px;
     margin-left: 8px;
@@ -81,6 +101,8 @@ function msLeave(e: MouseEvent, index: number) {
       padding: 3px;
       border-radius: 50%;
       background-color: var(--amia-tag-close-bg-color);
+      scale: 1.1;
+      transition: all 0.3s ease-out;
     }
     /*鼠标下划线动画 */
     .line-in {
@@ -105,7 +127,10 @@ function msLeave(e: MouseEvent, index: number) {
     }
   }
   .active {
-    color: var(--amia-tag-active-text-color);
+    color: var(--amia-tag-active-color);
+    .tab-title {
+      color: var(--amia-tag-active-color);
+    }
     .line {
       position: absolute;
       left: 0;

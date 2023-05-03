@@ -12,7 +12,7 @@
           <el-sub-menu :index="menu.path" v-if="menu.children && menu.children.length > 0">
             <template #title>
               <icon-font v-if="menu.meta.icon" :icon="menu.meta.icon"></icon-font>
-              <span class="menu-title">{{menu.meta &&  menu.meta.title }}</span>
+              <span class="menu-title" :title="menu.meta.title">{{menu.meta &&  menu.meta.title }}</span>
             </template>
             <sub-menu :childrens="menu.children"></sub-menu>
           </el-sub-menu>
@@ -20,7 +20,7 @@
           <el-menu-item :index="menu.path" v-else>
             <template #title>
               <icon-font v-if="menu.meta.icon" :icon="menu.meta.icon"></icon-font>
-              <span class="menu-title">{{menu.meta &&  menu.meta.title }}</span>
+              <span class="menu-title" :title="menu.meta.title">{{menu.meta &&  menu.meta.title }}</span>
             </template>
           </el-menu-item>
         </template>
@@ -53,10 +53,10 @@ const route = useRoute(); // 当前路由信息
 // console.log("路由：",route)
 // 打开/关闭
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
 </script>
 
