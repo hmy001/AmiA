@@ -17,7 +17,7 @@ const reload = Tools.debounce(() => {
     isReload.value = false;
   }, 650);
   emit('reload');
-});
+},200);
 </script>
 
 <style scoped lang='scss'>

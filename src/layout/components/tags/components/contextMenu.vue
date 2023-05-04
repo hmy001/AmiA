@@ -78,7 +78,7 @@ const menu = [
   }
   .context-menu-item {
     z-index: 1;
-    padding: 3px 20px;
+    padding: 3px 20px 3px 10px;
     .context-menu-icon {
       display: inline-block;
       margin: 8px;

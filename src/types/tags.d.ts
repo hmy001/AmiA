@@ -3,3 +3,7 @@ interface amiaTag{
   title: string;
   path: string;
 }
+
+interface tagOnlyPath {
+  path: string
+}

@@ -9,6 +9,15 @@ export const useTagsStore = defineStore('tags', () => {
   const activeTag = ref(''); // 当前高亮的tag
   const cacheTags: Ref<amiaTag[]>= ref([]); // 缓存的tags数组
   const lastMenuFixTag: Ref<amiaTag[]>= ref([]); // 缓存上次菜单设置的tags数组
+  const cacheTagsInfor = computed(() => {
+    const index = tagIndex({path: activeTag.value});
+    const info = {
+      hasLeft : (index <= 0) ? false : true,
+      hasRight: ((index+1) >= cacheTags.value.length) ? false : true,
+      hasOther: cacheTags.value.length > 1 ? true: false
+    };
+    return info;
+  });
   const routeStore = useRouteStore(); // 路由store
   initTag();
   // 初始化tag 至少确保有一个tag 用于默认展示页面，所以路由列表中的路由至少有一个meta的isaffix属性为true
@@ -57,21 +66,31 @@ export const useTagsStore = defineStore('tags', () => {
     }
   }
   // 删除其他tag
-  function deleteOtherTag(tag: amiaTag) {
+  function deleteOtherTags(tag: amiaTag | tagOnlyPath) {
+    if (!cacheTagsInfor.value.hasOther) return false;
     cacheTags.value = cacheTags.value.filter((v) => {
       return v.path === tag.path;
     });
+    console.log("删除其他：",tag,cacheTags.value)
+    return true;
   }
   // 删除左边的tag
-  function deleteLeftTags(tag: amiaTag) {
+  function deleteLeftTags(tag: amiaTag | tagOnlyPath) {
+    console.log("删除左边！！！")
+    if (!cacheTagsInfor.value.hasLeft || tagIndex(tag) == -1) return false;
     cacheTags.value.splice(0, tagIndex(tag));
+    return true;
   }
   // 删除右边的tag
-  function deleteRightTags(tag: amiaTag) {
-    cacheTags.value.splice(tagIndex(tag));
+  function deleteRightTags(tag: amiaTag | tagOnlyPath) {
+    console.log("删除右边1：",tagIndex(tag) )
+    if (!cacheTagsInfor.value.hasRight || tagIndex(tag) == -1) return false;
+    console.log("删除右边2：",tagIndex(tag))
+    cacheTags.value.splice(tagIndex(tag) + 1);
+    return false;
   }
   // 查找某个tag的下标
-  function tagIndex(tag: amiaTag) {
+  function tagIndex(tag: amiaTag | tagOnlyPath) {
     let index = -1;
     cacheTags.value.some((v ,i) => {
       if (v.path == tag.path) {
@@ -81,6 +100,6 @@ export const useTagsStore = defineStore('tags', () => {
     });
     return index;
   }
-  return { activeTag, cacheTags, lastMenuFixTag, initTag, AddTag, deleteTag, deleteOtherTag, deleteLeftTags, deleteRightTags};
+  return { activeTag, cacheTags, lastMenuFixTag, cacheTagsInfor, initTag, AddTag, deleteTag, deleteOtherTags, deleteLeftTags, deleteRightTags};
 });
 
