@@ -10,6 +10,7 @@ export const useTagsStore = defineStore('tags', () => {
   const cacheTags: Ref<amiaTag[]>= ref([]); // 缓存的tags数组
   const lastMenuFixTag: Ref<amiaTag[]>= ref([]); // 缓存上次菜单设置的tags数组
   const routeStore = useRouteStore(); // 路由store
+  initTag();
   // 初始化tag 至少确保有一个tag 用于默认展示页面，所以路由列表中的路由至少有一个meta的isaffix属性为true
   function initTag() {
     activeTag.value = Persistent.getLocal('activeTag') != null ? Persistent.getLocal('activeTag') : '';
@@ -52,7 +53,14 @@ export const useTagsStore = defineStore('tags', () => {
     if (activeTag.value === tag.path) { // 若删除的时高亮的tag
       deleteTagIndex == 0 ? activeTag.value = cacheTags.value[deleteTagIndex].path
       : activeTag.value = cacheTags.value[deleteTagIndex - 1].path;
+      return activeTag.value;
     }
+  }
+  // 删除其他tag
+  function deleteOtherTag(tag: amiaTag) {
+    cacheTags.value = cacheTags.value.filter((v) => {
+      return v.path === tag.path;
+    });
   }
   // 删除左边的tag
   function deleteLeftTags(tag: amiaTag) {
@@ -73,6 +81,6 @@ export const useTagsStore = defineStore('tags', () => {
     });
     return index;
   }
-  return { activeTag, cacheTags, lastMenuFixTag, initTag, AddTag, deleteTag, deleteLeftTags, deleteRightTags};
+  return { activeTag, cacheTags, lastMenuFixTag, initTag, AddTag, deleteTag, deleteOtherTag, deleteLeftTags, deleteRightTags};
 });
 

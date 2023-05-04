@@ -15,7 +15,9 @@ body,
   -webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: transparent;
 }
-
+ul li {
+  list-style: none;
+}
 // 宽高
 .h100 {
   height: 100%;
@@ -45,4 +47,57 @@ body,
 }
 .align-center{
   align-items: center;
+}
+
+// 旋转
+.rotate90 {
+  transform: rotate(90deg);
+}
+.rotate180 {
+  transform: rotate(180deg);
+}
+.rotate270 {
+  transform: rotate(270deg);
+}
+
+// 动画
+@keyframes roll-90 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes roll-360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  12.5% {
+    transform: rotate(45deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  37.5% {
+    transform: rotate(135deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  62.5% {
+    transform: rotate(225deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  87.5% {
+    transform: rotate(315deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

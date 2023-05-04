@@ -1,19 +1,20 @@
-<!-- tab -->
+<!-- tag -->
 <template>
-  <ul class="tab">
+  <ul class="tag">
     <li v-for="(item, index) in tagList"
      :key="item.path"
      @mouseenter="msEnter($event, index)"
      @mouseleave="msLeave($event, index)"
+     @contextmenu.prevent="$emit('tagContextMenu', $event, item)"
      @click="$emit('tagClick', item)"
-     class="tab-item"
+     class="tag-item"
      :class="[item.path == activeTag ? 'active' : '']" >
      <!-- tag图标 -->
       <icon-font class="pre-icon" v-if="item.icon" :icon="item.icon"></icon-font>
       <!-- tag名称 -->
-      <span class="tab-title">{{ item.title }}</span>
+      <span class="tag-title">{{ item.title }}</span>
       <!-- 关闭按钮 -->
-      <icon-font v-if="tagList.length > 1" class="icon" icon="icon-cuowuguanbiquxiao"></icon-font>
+      <icon-font @click.stop="$emit('tagClose', item)" v-if="tagList.length > 1" class="icon" icon="icon-cuowuguanbiquxiao"></icon-font>
       <!-- 下划线 -->
       <div class="line"
       :class="[enterIndex == index && item.path != activeTag ? 'line-in' : '',
@@ -50,6 +51,11 @@ function msLeave(e: MouseEvent, index: number) {
   enterIndex.value = -1;
   outIndex.value = index;
 }
+
+defineExpose({
+  enterIndex,
+  outIndex
+})
 </script>
 
 <style scoped lang='scss'>
@@ -72,12 +78,12 @@ function msLeave(e: MouseEvent, index: number) {
     width: 0;
   }
 }
-.tab {
+.tag {
   display: flex;
   height: $amia-tag-height;
-  padding: 0 10px 2px;
+  padding: 0px 10px 0px;
   color: var(--amia-tag-color);
-  .tab-item {
+  .tag-item {
     position: relative;
     cursor: pointer;
     display: flex;
@@ -128,7 +134,7 @@ function msLeave(e: MouseEvent, index: number) {
   }
   .active {
     color: var(--amia-tag-active-color);
-    .tab-title {
+    .tag-title {
       color: var(--amia-tag-active-color);
     }
     .line {
